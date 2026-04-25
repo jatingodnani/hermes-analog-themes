@@ -1,0 +1,236 @@
+name: crt-green
+label: "CRT Green"
+description: "Green phosphor CRT terminal — classic hacker-green with scanlines and glow"
+
+palette:
+  background: "#000500"
+  midground: "#6aff7e"
+  foreground:
+    hex: "#9fffb0"
+    alpha: 0.12
+  warmGlow: "rgba(106, 255, 126, 0.15)"
+  noiseOpacity: 1.2
+
+typography:
+  fontSans: '"IBM Plex Mono", "VT323", ui-monospace, "Courier New", monospace'
+  fontMono: '"IBM Plex Mono", ui-monospace, "Courier New", monospace'
+  fontDisplay: '"VT323", "IBM Plex Mono", monospace'
+  fontUrl: "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=VT323&display=swap"
+  baseSize: "14px"
+  lineHeight: "1.6"
+  letterSpacing: "0.03em"
+
+layout:
+  radius: "0"
+  density: "compact"
+
+layoutVariant: standard
+
+componentStyles:
+  card:
+    boxShadow: "inset 0 0 0 1px rgba(106, 255, 126, 0.12), 0 0 16px -4px rgba(106, 255, 126, 0.1)"
+    background: "linear-gradient(180deg, rgba(8, 12, 8, 0.94), rgba(4, 8, 4, 0.98))"
+  header:
+    background: "linear-gradient(180deg, rgba(4, 8, 4, 0.98), rgba(0, 5, 0, 0.97))"
+    boxShadow: "0 1px 0 rgba(106, 255, 126, 0.08)"
+  tab:
+    clipPath: "polygon(3px 0, calc(100% - 3px) 0, 100% 100%, 0 100%)"
+  sidebar:
+    background: "rgba(0, 4, 0, 0.98)"
+    boxShadow: "1px 0 0 rgba(106, 255, 126, 0.06)"
+
+colorOverrides:
+  primary: "#6aff7e"
+  primaryForeground: "#000500"
+  accent: "#6aff7e"
+  accentForeground: "#000500"
+  secondary: "rgba(106, 255, 126, 0.1)"
+  secondaryForeground: "#6aff7e"
+  success: "#6aff7e"
+  warning: "#ffd54f"
+  destructive: "#ff6e6e"
+  border: "rgba(106, 255, 126, 0.12)"
+  ring: "rgba(106, 255, 126, 0.4)"
+  mutedForeground: "rgba(106, 255, 126, 0.5)"
+  muted: "rgba(106, 255, 126, 0.05)"
+  card: "rgba(4, 8, 4, 0.94)"
+  cardForeground: "#6aff7e"
+  popover: "rgba(4, 8, 4, 0.98)"
+  popoverForeground: "#6aff7e"
+  input: "rgba(106, 255, 126, 0.06)"
+
+customCSS: |
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9000;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 2px,
+      rgba(0, 0, 0, 0.08) 3px,
+      rgba(0, 0, 0, 0.08) 4px
+    );
+    mix-blend-mode: multiply;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 8999;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 50%,
+      rgba(0, 0, 0, 0.12) 65%,
+      rgba(0, 0, 0, 0.28) 80%,
+      rgba(0, 0, 0, 0.5)  100%
+    );
+    mix-blend-mode: multiply;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  [class*="font-mondwest"] {
+    text-shadow:
+      0 0 4px  rgba(106, 255, 126, 0.3),
+      0 0 10px rgba(106, 255, 126, 0.14),
+      0 0 20px rgba(106, 255, 126, 0.06);
+  }
+
+  a:hover,
+  button:hover,
+  [role="button"]:hover {
+    text-shadow: 0 0 8px rgba(106, 255, 126, 0.45);
+    transition: text-shadow 0.12s ease;
+  }
+
+  a[aria-current="page"] {
+    text-shadow:
+      0 0 6px  rgba(106, 255, 126, 0.4),
+      0 0 14px rgba(106, 255, 126, 0.2);
+  }
+
+  @keyframes crtFlicker {
+    0%,50%,99.6%,99.8% { opacity: 1; }
+    99.5%               { opacity: 0.984; }
+    99.7%               { opacity: 0.991; }
+  }
+  html { animation: crtFlicker 3s infinite ease-in-out; }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.4); }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(106, 255, 126, 0.16);
+    border: 1px solid rgba(106, 255, 126, 0.06);
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(106, 255, 126, 0.3); }
+
+  ::selection {
+    background: rgba(106, 255, 126, 0.25);
+    color: #000500;
+    text-shadow: none;
+  }
+  input:focus, textarea:focus, select:focus { caret-color: #6aff7e; }
+
+  /* Shell buttons use bg-foreground + text-background. Since both
+     map to near-black on a dark theme, text becomes invisible.
+     By also targeting *, we override child text-background spans. */
+  button[class*="bg-foreground"],
+  button[class*="bg-foreground"] *,
+  [role="button"][class*="bg-foreground"],
+  [role="button"][class*="bg-foreground"] * {
+    background-color: rgba(106, 255, 126, 0.12) !important;
+    color: #6aff7e !important;
+    text-shadow: 0 0 6px rgba(106, 255, 126, 0.4) !important;
+  }
+  button[class*="bg-foreground"] {
+    border: 1px solid rgba(106, 255, 126, 0.28) !important;
+  }
+  button[class*="bg-foreground"]:hover:not(:disabled),
+  button[class*="bg-foreground"]:hover:not(:disabled) * {
+    background-color: rgba(106, 255, 126, 0.2) !important;
+    box-shadow: 0 0 10px rgba(106, 255, 126, 0.12) !important;
+  }
+
+  [class*="bg-foreground"]:not([class*="outline"]):not(input):not(textarea) {
+    background-color: rgba(106, 255, 126, 0.14) !important;
+    color: #6aff7e !important;
+    border: 1px solid rgba(106, 255, 126, 0.32) !important;
+  }
+  [class*="bg-foreground"]:not([class*="outline"]):not(input):not(textarea) * {
+    color: #6aff7e !important;
+  }
+
+  button[class*="outline"],
+  [class*="Button"][class*="outline"] {
+    border-color: rgba(106, 255, 126, 0.26) !important;
+    color: #6aff7e !important;
+    background: transparent !important;
+  }
+  button[class*="outline"] *,
+  [class*="Button"][class*="outline"] * {
+    color: #6aff7e !important;
+  }
+  button[class*="outline"]:hover,
+  [class*="Button"][class*="outline"]:hover {
+    background: rgba(106, 255, 126, 0.08) !important;
+  }
+
+  input[type="text"],
+  input[type="search"],
+  input[type="number"],
+  input[type="password"],
+  textarea, select,
+  [class*="Input"] {
+    background: rgba(106, 255, 126, 0.04) !important;
+    border-color: rgba(106, 255, 126, 0.14) !important;
+    color: #6aff7e !important;
+  }
+  input::placeholder, textarea::placeholder {
+    color: rgba(106, 255, 126, 0.3) !important;
+  }
+  input:focus, textarea:focus, select:focus {
+    border-color: rgba(106, 255, 126, 0.42) !important;
+    box-shadow: 0 0 0 2px rgba(106, 255, 126, 0.1) !important;
+  }
+
+  [class*="Badge"], [class*="badge"] {
+    background: rgba(106, 255, 126, 0.1) !important;
+    color: #6aff7e !important;
+    border-color: rgba(106, 255, 126, 0.22) !important;
+    text-shadow: 0 0 4px rgba(106, 255, 126, 0.4) !important;
+    letter-spacing: 0.05em;
+  }
+
+  [class*="sidebar"] [aria-selected="true"],
+  [class*="nav"] [aria-selected="true"],
+  [class*="Sidebar"] [aria-current] {
+    background: rgba(106, 255, 126, 0.08) !important;
+    border-left: 2px solid #6aff7e !important;
+    color: #6aff7e !important;
+  }
+  [class*="sidebar"] *:focus-visible,
+  [class*="Sidebar"] *:focus-visible {
+    outline-color: #6aff7e !important;
+  }
+
+  [data-state="checked"] [class*="thumb"],
+  [role="switch"][data-state="checked"] [class*="thumb"] {
+    background: #6aff7e !important;
+    box-shadow: 0 0 6px rgba(106, 255, 126, 0.5) !important;
+  }
+  [role="switch"][data-state="checked"] [class*="track"] {
+    background: rgba(106, 255, 126, 0.2) !important;
+  }
+
+  .recharts-bar-rectangle path, .recharts-rectangle {
+    fill: rgba(106, 255, 126, 0.55) !important;
+  }
+  [class*="recharts"] text { fill: #6aff7e !important; }
+
+  .border-border, [class*="border-border"] {
+    border-color: rgba(106, 255, 126, 0.1);
+  }

@@ -1,0 +1,264 @@
+name: manuscript
+label: "Manuscript"
+description: "Dark scriptorium — candlelit illuminated manuscript, gold leaf on night vellum"
+
+palette:
+  background: "#0e0a04"
+  midground: "#c9a840"
+  foreground:
+    hex: "#c9a840"
+    alpha: 0.08
+  warmGlow: "rgba(201, 168, 64, 0.15)"
+  noiseOpacity: 0.3
+
+typography:
+  fontSans: '"Crimson Pro", "EB Garamond", "Georgia", serif'
+  fontMono: '"IBM Plex Mono", ui-monospace, monospace'
+  fontDisplay: '"Cinzel", "Cormorant Garamond", "Georgia", serif'
+  fontUrl: "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+  baseSize: "15px"
+  lineHeight: "1.75"
+  letterSpacing: "0.015em"
+
+layout:
+  radius: "0"
+  density: "comfortable"
+
+layoutVariant: tiled
+
+componentStyles:
+  card:
+    boxShadow: "0 2px 12px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(201, 168, 64, 0.12)"
+    background: "linear-gradient(180deg, rgba(20, 14, 6, 0.97), rgba(14, 10, 4, 0.99))"
+  header:
+    background: "linear-gradient(180deg, rgba(10, 7, 2, 0.99), rgba(8, 6, 2, 0.98))"
+    boxShadow: "0 1px 0 rgba(201, 168, 64, 0.08)"
+  footer:
+    background: "rgba(8, 6, 2, 0.98)"
+    boxShadow: "0 -1px 0 rgba(201, 168, 64, 0.06)"
+
+colorOverrides:
+  primary: "#c0401e"
+  primaryForeground: "#f0e0c0"
+  accent: "#c9a840"
+  accentForeground: "#0e0a04"
+  success: "#6a9a50"
+  warning: "#c9a840"
+  destructive: "#c0401e"
+  border: "rgba(201, 168, 64, 0.1)"
+  ring: "rgba(201, 168, 64, 0.4)"
+  mutedForeground: "#8a7050"
+  muted: "rgba(201, 168, 64, 0.05)"
+  secondary: "#5a3e20"
+  secondaryForeground: "#d8c090"
+  card: "#141006"
+  cardForeground: "#d8c890"
+  popover: "#1a1408"
+  popoverForeground: "#d8c890"
+  input: "rgba(201, 168, 64, 0.06)"
+  background: "#0e0a04"
+  foreground: "#d8c890"
+
+customCSS: |
+  html, body, #root, #__next,
+  [data-layout-variant] {
+    background-color: #0e0a04 !important;
+  }
+  div[class*="bg-black"], div[class*="bg-zinc-9"], div[class*="bg-neutral-9"] {
+    background-color: #0e0a04 !important;
+  }
+  html, body { color: #d8c890 !important; }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9000;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.6;
+    mix-blend-mode: overlay;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 8999;
+    background: radial-gradient(
+      ellipse at 50% 40%,
+      rgba(201, 168, 64, 0.03) 0%,
+      transparent 55%,
+      rgba(0, 0, 0, 0.25) 100%
+    );
+    mix-blend-mode: normal;
+  }
+
+  [class*="text-white"], [class*="text-zinc-"],
+  [class*="text-neutral-"], [class*="text-slate-"] {
+    color: #d8c890 !important;
+  }
+
+  [class*="text-muted"], [class*="muted-foreground"],
+  [class*="text-muted-foreground"] {
+    color: #8a7050 !important;
+    opacity: 1 !important;
+  }
+  p[class*="text-xs"], span[class*="text-xs"], div[class*="text-xs"],
+  label[class*="text-xs"], small, [class*="uppercase"] {
+    color: #8a7050 !important;
+    opacity: 1 !important;
+  }
+
+  header, nav, [role="navigation"] {
+    background-color: #090602 !important;
+    border-color: rgba(201, 168, 64, 0.07) !important;
+  }
+  header [class*="bg-black"], header [class*="bg-zinc-"],
+  nav [class*="bg-black"], nav [class*="bg-zinc-"] {
+    background-color: #090602 !important;
+  }
+  header [class*="text-white"], header [class*="text-zinc-"],
+  nav [class*="text-white"], nav [class*="text-zinc-"] {
+    color: #d8c890 !important;
+  }
+
+  header a, nav a, [role="navigation"] a {
+    color: rgba(216, 200, 144, 0.45) !important;
+    font-family: "Cinzel", Georgia, serif !important;
+    letter-spacing: 0.06em;
+    font-size: 0.78rem;
+    transition: color 0.15s ease;
+  }
+  header a:hover, nav a:hover { color: #d8c890 !important; }
+  header a[aria-current="page"], nav a[aria-current="page"] {
+    color: #c9a840 !important;
+    font-weight: 600;
+  }
+
+  a[aria-current="page"] span[aria-hidden]:last-child {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(201, 168, 64, 0.8),
+      transparent
+    ) !important;
+    height: 2px !important;
+  }
+
+  footer, [class*="footer"] {
+    background-color: #080501 !important;
+    border-color: rgba(201, 168, 64, 0.06) !important;
+  }
+  footer [class*="bg-black"], [class*="footer"] [class*="bg-black"] {
+    background-color: #080501 !important;
+  }
+  footer [class*="text-white"], footer [class*="text-zinc-"] {
+    color: rgba(216, 200, 144, 0.4) !important;
+  }
+
+  [class*="Card"] {
+    background: linear-gradient(180deg, #18130a, #110d05) !important;
+    border-top: 1px solid rgba(201, 168, 64, 0.15) !important;
+    border-color: rgba(201, 168, 64, 0.08) !important;
+  }
+  [class*="Card"] * { color: #d8c890; }
+
+  h1, h2, h3, h4, h5, h6,
+  [class*="CardTitle"], [class*="card-title"] {
+    font-family: "Cinzel", Georgia, serif !important;
+    font-variant-caps: small-caps;
+    letter-spacing: 0.05em;
+    color: #c9a840 !important;
+    text-shadow: 0 0 20px rgba(201, 168, 64, 0.1);
+  }
+
+  h2, h3, [class*="CardTitle"] {
+    text-shadow:
+      0 0 6px rgba(201, 168, 64, 0.15),
+      0 0 20px rgba(201, 168, 64, 0.06);
+  }
+
+  button[class*="bg-foreground"],
+  [role="button"][class*="bg-foreground"] {
+    background-color: rgba(201, 168, 64, 0.15) !important;
+    color: #c9a840 !important;
+    border: 1px solid rgba(201, 168, 64, 0.3) !important;
+    text-shadow: none !important;
+  }
+  button[class*="bg-foreground"] *,
+  [role="button"][class*="bg-foreground"] * {
+    color: #c9a840 !important;
+  }
+  button[class*="bg-foreground"]:hover:not(:disabled),
+  [role="button"][class*="bg-foreground"]:hover:not(:disabled) {
+    background-color: rgba(201, 168, 64, 0.22) !important;
+  }
+
+  button[class*="outline"], [class*="Button"][class*="outline"] {
+    border-color: rgba(201, 168, 64, 0.25) !important;
+    color: #c9a840 !important;
+    background: transparent !important;
+  }
+  button[class*="outline"] *, [class*="Button"][class*="outline"] * {
+    color: #c9a840 !important;
+  }
+  button[class*="outline"]:hover { background: rgba(201, 168, 64, 0.08) !important; }
+
+  input[type="text"], input[type="search"],
+  input[type="number"], input[type="password"],
+  textarea, select, [class*="Input"] {
+    background: rgba(201, 168, 64, 0.04) !important;
+    border-color: rgba(201, 168, 64, 0.12) !important;
+    color: #d8c890 !important;
+  }
+  input::placeholder, textarea::placeholder {
+    color: rgba(216, 200, 144, 0.25) !important;
+  }
+  input:focus, textarea:focus, select:focus {
+    border-color: rgba(201, 168, 64, 0.4) !important;
+    box-shadow: 0 0 0 2px rgba(201, 168, 64, 0.08) !important;
+    caret-color: #c9a840;
+  }
+
+  [class*="Badge"], [class*="badge"] {
+    background: rgba(201, 168, 64, 0.1) !important;
+    color: #c9a840 !important;
+    border-color: rgba(201, 168, 64, 0.2) !important;
+    letter-spacing: 0.05em;
+  }
+  [class*="bg-green"], [class*="bg-emerald"] {
+    background: rgba(106, 154, 80, 0.14) !important;
+    color: #8ab870 !important;
+  }
+
+  [data-state="checked"] [class*="thumb"],
+  [role="switch"][data-state="checked"] [class*="thumb"] {
+    background: #c9a840 !important;
+    box-shadow: 0 0 6px rgba(201, 168, 64, 0.4) !important;
+  }
+  [role="switch"][data-state="checked"] [class*="track"] {
+    background: rgba(201, 168, 64, 0.2) !important;
+  }
+
+  [class*="sidebar"] [aria-selected="true"],
+  [class*="nav"] [aria-selected="true"],
+  [class*="Sidebar"] [aria-current] {
+    background: rgba(201, 168, 64, 0.08) !important;
+    border-left: 2px solid #c9a840 !important;
+    color: #c9a840 !important;
+  }
+
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
+  ::-webkit-scrollbar-thumb { background: rgba(201, 168, 64, 0.18); }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(201, 168, 64, 0.35); }
+
+  ::selection { background: rgba(201, 168, 64, 0.22); color: #d8c890; }
+
+  [class*="recharts"] rect:not([fill="none"]) { fill: rgba(192, 64, 30, 0.5) !important; }
+  [class*="recharts"] text { fill: #8a7050 !important; }
+  [class*="text-emerald-"] { color: #8ab870 !important; }
+
+  hr, [class*="Separator"] { border-color: rgba(201, 168, 64, 0.08) !important; }

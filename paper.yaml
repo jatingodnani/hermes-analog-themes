@@ -1,0 +1,261 @@
+name: paper
+label: "Paper"
+description: "Dark aged journal — lamplight on leather, cream ink on night paper"
+
+palette:
+  background: "#0d0c08"
+  midground: "#c8bfa0"
+  foreground:
+    hex: "#4a7a3a"
+    alpha: 0.08
+  warmGlow: "rgba(200, 191, 160, 0.1)"
+  noiseOpacity: 0.3
+
+typography:
+  fontSans: '"Lora", "Source Serif 4", "Georgia", serif'
+  fontMono: '"IBM Plex Mono", ui-monospace, monospace'
+  fontDisplay: '"Lora", "Georgia", serif'
+  fontUrl: "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+  baseSize: "15px"
+  lineHeight: "1.7"
+  letterSpacing: "0.005em"
+
+layout:
+  radius: "2px"
+  density: "comfortable"
+
+layoutVariant: standard
+
+componentStyles:
+  card:
+    boxShadow: "0 2px 12px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(200, 191, 160, 0.07)"
+    background: "linear-gradient(180deg, rgba(18, 16, 10, 0.97), rgba(13, 12, 8, 0.99))"
+  header:
+    background: "rgba(9, 8, 5, 0.99)"
+    boxShadow: "0 1px 0 rgba(200, 191, 160, 0.07)"
+  footer:
+    background: "rgba(8, 7, 4, 0.98)"
+    boxShadow: "0 -1px 0 rgba(200, 191, 160, 0.05)"
+
+colorOverrides:
+  primary: "#4a7a3a"
+  primaryForeground: "#f0ead8"
+  accent: "#8b3a28"
+  accentForeground: "#f0ead8"
+  success: "#4a7a3a"
+  warning: "#a06030"
+  destructive: "#8b3a28"
+  border: "rgba(200, 191, 160, 0.08)"
+  ring: "rgba(74, 122, 58, 0.38)"
+  mutedForeground: "#706858"
+  muted: "rgba(200, 191, 160, 0.04)"
+  secondary: "#4a3820"
+  secondaryForeground: "#c8bfa0"
+  card: "#161410"
+  cardForeground: "#c8bfa0"
+  popover: "#1c1a12"
+  popoverForeground: "#c8bfa0"
+  input: "rgba(200, 191, 160, 0.06)"
+  background: "#0d0c08"
+  foreground: "#c8bfa0"
+
+customCSS: |
+  html, body, #root, #__next,
+  [data-layout-variant] {
+    background-color: #0d0c08 !important;
+  }
+  div.bg-black, div.bg-zinc-950, div.bg-neutral-950 {
+    background-color: #0d0c08 !important;
+  }
+  html, body { color: #c8bfa0 !important; }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9000;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.55;
+    mix-blend-mode: overlay;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 8999;
+    background: radial-gradient(
+      ellipse at 50% 42%,
+      rgba(200, 180, 120, 0.025) 0%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+  }
+
+  [class*="text-white"], [class*="text-zinc-"],
+  [class*="text-neutral-"], [class*="text-slate-"] {
+    color: #c8bfa0 !important;
+  }
+
+  [class*="text-muted"], [class*="muted-foreground"],
+  [class*="text-muted-foreground"] {
+    color: #706858 !important;
+    opacity: 1 !important;
+  }
+  p[class*="text-xs"], span[class*="text-xs"], div[class*="text-xs"],
+  label[class*="text-xs"], small, [class*="uppercase"] {
+    color: #706858 !important;
+    opacity: 1 !important;
+  }
+
+  header, nav, [role="navigation"] {
+    background-color: #090805 !important;
+    border-color: rgba(200, 191, 160, 0.06) !important;
+  }
+  header [class*="bg-black"], header [class*="bg-zinc-"],
+  nav [class*="bg-black"], nav [class*="bg-zinc-"] {
+    background-color: #090805 !important;
+  }
+  header [class*="text-white"], header [class*="text-zinc-"],
+  nav [class*="text-white"], nav [class*="text-zinc-"] {
+    color: #c8bfa0 !important;
+  }
+
+  header a, nav a, [role="navigation"] a {
+    color: rgba(200, 191, 160, 0.42) !important;
+    font-family: "Lora", Georgia, serif !important;
+    font-style: normal !important;
+    letter-spacing: 0.01em;
+    transition: color 0.15s ease;
+  }
+  header a:hover, nav a:hover { color: #c8bfa0 !important; font-style: italic; }
+  header a[aria-current="page"], nav a[aria-current="page"] {
+    color: #c8bfa0 !important;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  a[aria-current="page"] span[aria-hidden]:last-child {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(74, 122, 58, 0.7),
+      transparent
+    ) !important;
+    height: 2px !important;
+  }
+
+  footer, [class*="footer"] {
+    background-color: #070604 !important;
+    border-color: rgba(200, 191, 160, 0.05) !important;
+  }
+  footer [class*="bg-black"], [class*="footer"] [class*="bg-black"] {
+    background-color: #070604 !important;
+  }
+  footer [class*="text-white"], footer [class*="text-zinc-"] {
+    color: rgba(200, 191, 160, 0.38) !important;
+  }
+
+  [class*="Card"] {
+    background: linear-gradient(180deg, #181510, #131108) !important;
+    border-color: rgba(200, 191, 160, 0.07) !important;
+  }
+  [class*="Card"] * { color: #c8bfa0; }
+
+  h1, h2, h3, h4, h5, h6,
+  [class*="CardTitle"], [class*="card-title"] {
+    font-family: "Lora", Georgia, serif !important;
+    color: #d4c8a8 !important;
+    font-weight: 600;
+  }
+
+  button[class*="bg-foreground"],
+  [role="button"][class*="bg-foreground"] {
+    background-color: rgba(139, 58, 40, 0.2) !important;
+    color: #d08068 !important;
+    border: 1px solid rgba(139, 58, 40, 0.35) !important;
+    text-shadow: none !important;
+  }
+  button[class*="bg-foreground"] *,
+  [role="button"][class*="bg-foreground"] * {
+    color: #d08068 !important;
+  }
+  button[class*="bg-foreground"]:hover:not(:disabled),
+  [role="button"][class*="bg-foreground"]:hover:not(:disabled) {
+    background-color: rgba(139, 58, 40, 0.28) !important;
+  }
+
+  button[class*="outline"], [class*="Button"][class*="outline"] {
+    border-color: rgba(200, 191, 160, 0.2) !important;
+    color: #c8bfa0 !important;
+    background: transparent !important;
+  }
+  button[class*="outline"] *, [class*="Button"][class*="outline"] * {
+    color: #c8bfa0 !important;
+  }
+  button[class*="outline"]:hover { background: rgba(200, 191, 160, 0.06) !important; }
+
+  input[type="text"], input[type="search"],
+  input[type="number"], input[type="password"],
+  textarea, select, [class*="Input"] {
+    background: rgba(200, 191, 160, 0.04) !important;
+    border-color: rgba(200, 191, 160, 0.1) !important;
+    color: #c8bfa0 !important;
+  }
+  input::placeholder, textarea::placeholder {
+    color: rgba(200, 191, 160, 0.25) !important;
+  }
+  input:focus, textarea:focus, select:focus {
+    border-color: rgba(74, 122, 58, 0.4) !important;
+    box-shadow: 0 0 0 2px rgba(74, 122, 58, 0.08) !important;
+    caret-color: #c8bfa0;
+  }
+
+  [class*="Badge"], [class*="badge"] {
+    background: rgba(74, 122, 58, 0.12) !important;
+    color: #7aba60 !important;
+    border-color: rgba(74, 122, 58, 0.22) !important;
+    letter-spacing: 0.04em;
+  }
+
+  [data-state="checked"] [class*="thumb"],
+  [role="switch"][data-state="checked"] [class*="thumb"] {
+    background: #4a7a3a !important;
+  }
+  [role="switch"][data-state="checked"] [class*="track"] {
+    background: rgba(74, 122, 58, 0.2) !important;
+  }
+
+  [class*="sidebar"] [aria-selected="true"],
+  [class*="nav"] [aria-selected="true"],
+  [class*="Sidebar"] [aria-current] {
+    background: rgba(139, 58, 40, 0.1) !important;
+    border-left: 2px solid #8b3a28 !important;
+    color: #d08068 !important;
+  }
+
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
+  ::-webkit-scrollbar-thumb { background: rgba(200, 191, 160, 0.15); }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(200, 191, 160, 0.28); }
+
+  ::selection { background: rgba(74, 122, 58, 0.2); color: #c8bfa0; }
+
+  [class*="recharts"] rect:not([fill="none"]) { fill: rgba(139, 58, 40, 0.5) !important; }
+  [class*="recharts"] text { fill: #706858 !important; }
+  [class*="text-emerald-"], [class*="text-green-"] { color: #7aba60 !important; }
+
+  hr, [class*="Separator"] { border-color: rgba(200, 191, 160, 0.07) !important; }
+
+  body {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 25px,
+      rgba(200, 191, 160, 0.015) 26px,
+      rgba(200, 191, 160, 0.015) 27px
+    );
+    background-attachment: fixed;
+  }
