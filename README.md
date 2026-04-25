@@ -41,10 +41,3 @@ The classic green-phosphor terminal aesthetic. High contrast, aggressive glow, a
 2. Open your Hermes Dashboard.
 3. Navigate to **Config -> Appearance**.
 4. Click **Import Theme** and select any of the `.yaml` files from this pack.
-
-## Screenshots
-*(Remember to add screenshots here before posting!)*
-
----
-*Submitted for the Hermes Hackathon!*
-# hermes-analog-themes
